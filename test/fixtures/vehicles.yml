@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  charge_id: 1
+  number: MyString
+  in_time: 2023-02-16 18:02:52
+  out_time: 2023-02-16 18:02:52
+  charges: 1
+  status: MyString
+  user_id: 1
+
+two:
+  charge_id: 1
+  number: MyString
+  in_time: 2023-02-16 18:02:52
+  out_time: 2023-02-16 18:02:52
+  charges: 1
+  status: MyString
+  user_id: 1
