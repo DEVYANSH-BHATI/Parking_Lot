@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 41e2db212065f2a75a5d73e76d6eb8ecd53a6acf
+  revision: 44f0fd741f51bb71e2dd4219200acc5c91aef449
   branch: main
   specs:
-    devise (4.9.0)
+    devise (4.9.0.alpha)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -103,6 +103,15 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.1.1)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    haml-rails (2.1.0)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6)
+      railties (>= 5.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -197,7 +206,9 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    temple (0.10.0)
     thor (1.2.1)
+    tilt (2.1.0)
     timeout (0.3.1)
     turbo-rails (1.3.3)
       actionpack (>= 6.0.0)
@@ -234,6 +245,7 @@ DEPENDENCIES
   capybara
   debug
   devise!
+  haml-rails (~> 2.0)
   importmap-rails
   jbuilder
   pg (~> 1.1)

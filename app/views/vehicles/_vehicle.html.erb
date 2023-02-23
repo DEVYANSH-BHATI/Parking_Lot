@@ -1,50 +1,39 @@
 <h1><strong>Vehicles Details</strong></h1>
 
 <div id="<%= dom_id vehicle %>">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Charge:</th>
-      <th scope="col">Number:</th>
-      <th scope="col">In time:</th>
-      <th scope="col">Out time:</th>
-      <th scope="col">Charges:</th>
-      <th scope="col">Status:</th>
-      <th scope="col">User:</th>
-    </tr>
-  </thead>
-  <% @vehicles.each do |vehicle| %>
-  <tbody>
-    
-    <tr>
-      <th scope="row"><%= vehicle.id %></th>
-      <td>
-          <%= vehicle.charge_id %>
-      </td>
-      <td>
-        <%= vehicle.number %>
-      </td>
-      <td>
-        <%= vehicle.in_time %>
-      </td>
-      <td>
-        <%= vehicle.out_time %>
-      </td>
-      <td>
-         <%= vehicle.charges %>
-      </td>
-      <td>
-        <%= vehicle.status %>
-      </td>
-      <td>
-        <%= vehicle.user_id %>
-      </td>
+  <p>
+    <strong>Charge:</strong>
+    <%= vehicle.charge_id %>
+  </p>
 
-    </tr>
-    
-  </tbody>
-  <% end %> 
-</table>
+  <p>
+    <strong>Number:</strong>
+    <%= vehicle.number %>
+  </p>
+
+  <p>
+    <strong>In time:</strong>
+    <%= vehicle.in_time %>
+  </p>
+
+  <p>
+    <strong>Out time:</strong>
+    <%= vehicle.out_time %>
+  </p>
+
+  <p>
+    <strong>Charges:</strong>
+    <%= vehicle.charges %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= vehicle.status %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= vehicle.user_id %>
+  </p>
+
 </div>
-
