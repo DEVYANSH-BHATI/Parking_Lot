@@ -3,7 +3,11 @@
 
   ruby "3.1.3"
 
-  gem "haml-rails", "~> 2.0"
+  gem "haml-rails"
+  # for bootstrap
+  gem 'bootstrap', '~> 5.0.0-alpha1'
+  # Bootstrap JavaScript can optionally use jQuery. If you're using Rails 5.1+, you can add the jquery-rails gem to your Gemfile:
+  gem 'jquery-rails'
 
   # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
   gem "rails", "~> 7.0.4", ">= 7.0.4.2"

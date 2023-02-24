@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<!-- <h1>Vehicles</h1> -->
+<h1>Vehicles</h1>
 
 <div id="vehicles">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Charge:</th>
+      <th scope="col">Number:</th>
+      <th scope="col">In time:</th>
+      <th scope="col">Out time:</th>
+      <th scope="col">Charges:</th>
+      <th scope="col">Status:</th>
+      <th scope="col">User:</th>
+    </tr>
+  </thead>
   <% @vehicles.each do |vehicle| %>
     <%= render vehicle %>
-    <p>
-      <%= link_to "Show this vehicle", vehicle %>
-    </p>
+   <td>
+        <p>
+         <%= link_to "Show this vehicle", vehicle %>
+        </p>
+      </td>
   <% end %>
+  </table>
 </div>
 
 <%= link_to "New vehicle", new_vehicle_path %>
