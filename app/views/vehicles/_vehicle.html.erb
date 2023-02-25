@@ -1,39 +1,32 @@
-<h1><strong>Vehicles Details</strong></h1>
 
 <div id="<%= dom_id vehicle %>">
-  <p>
-    <strong>Charge:</strong>
-    <%= vehicle.charge_id %>
-  </p>
+  <tbody>
 
-  <p>
-    <strong>Number:</strong>
-    <%= vehicle.number %>
-  </p>
+    <tr>
+      <th scope="row"><%= vehicle.id %></th>
+      <td>
+          <%= vehicle.charge_id %>
+      </td>
+      <td>
+        <%= vehicle.number %>
+      </td>
+      <td>
+        <%= vehicle.in_time %>
+      </td>
+      <td>
+        <%= vehicle.out_time %>
+      </td>
+      <td>
+         <%= vehicle.charges %>
+      </td>
+      <td>
+        <%= vehicle.status %>
+      </td>
+      <td>
+        <%= vehicle.user_id %>
+      </td>
+      
+    </tr>
 
-  <p>
-    <strong>In time:</strong>
-    <%= vehicle.in_time %>
-  </p>
-
-  <p>
-    <strong>Out time:</strong>
-    <%= vehicle.out_time %>
-  </p>
-
-  <p>
-    <strong>Charges:</strong>
-    <%= vehicle.charges %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= vehicle.status %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= vehicle.user_id %>
-  </p>
-
+  </tbody>
 </div>

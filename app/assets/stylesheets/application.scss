@@ -1,0 +1,11 @@
+
+
+ // Custom bootstrap varbiables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+// <!-- Background image -->
+
+.background{
+    background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+    height: 300px;
+}
