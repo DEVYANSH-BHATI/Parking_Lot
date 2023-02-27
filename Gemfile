@@ -5,7 +5,7 @@
 
   gem "haml-rails"
   # for bootstrap
-  gem 'bootstrap', '~> 5.0.0-alpha1'
+  gem 'bootstrap'
   # Bootstrap JavaScript can optionally use jQuery. If you're using Rails 5.1+, you can add the jquery-rails gem to your Gemfile:
   gem 'jquery-rails'
 
@@ -29,6 +29,10 @@
 
   # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
   gem "stimulus-rails"
+
+  gem 'autoprefixer-rails'
+  gem 'popper_js'
+  gem 'sassc-rails'
 
   # Build JSON APIs with ease [https://github.com/rails/jbuilder]
   gem "jbuilder"
