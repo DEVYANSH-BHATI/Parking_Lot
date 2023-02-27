@@ -11,7 +11,7 @@ GIT
       warden (~> 1.2.3)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actioncable (7.0.4.2)
       actionpack (= 7.0.4.2)
