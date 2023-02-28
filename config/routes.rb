@@ -5,8 +5,12 @@ Rails.application.routes.draw do
       confirmations: 'users/confirmations',
       passwords: 'users/passwords',
       unlocks: 'users/unlocks'
+
     }
+
+    get "/vehicles",to: "vehicles#index"
     resources :vehicles
+
     root "home#index"
 
   end
