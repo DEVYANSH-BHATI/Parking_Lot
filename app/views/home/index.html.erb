@@ -1,8 +1,8 @@
 <h1>Parking Lot</h1>
-<% if current_user %>
-<%= button_to "sign_out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
-<%= link_to "dashboard", vehicles_path , class:"btn btn-primary" %>
-<% else %>
+<%# if current_user %>
+<%#= button_to "sign_out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
+<%#= link_to "dashboard", vehicles_path , class:"btn btn-primary" %>
+<%# else %>
 <%= link_to "sign_up" ,new_user_registration_path,class: "btn btn-secondary" %>
 <%= link_to "sign_in", new_user_session_path, class:"btn btn-primary" %>
-<% end %>
+<%# end %>
