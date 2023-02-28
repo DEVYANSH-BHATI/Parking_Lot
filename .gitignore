@@ -29,3 +29,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# my custom ignore files
+/parking_lot_con_working.session.sql
+/.vscode
+.gitignore
