@@ -1,0 +1,22 @@
+= form_for @charge do |f|
+  - if @charge.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@charge.errors.count, "error")} prohibited this charge from being saved:"
+      %ul
+        - @charge.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :vehicle_type
+    = f.text_field :vehicle_type
+  .field
+    = f.label :min_charge
+    = f.number_field :min_charge
+  .field
+    = f.label :min_hours
+    = f.number_field :min_hours
+  .field
+    = f.label :extra_hour_charges
+    = f.number_field :extra_hour_charges
+  .actions
+    = f.submit 'Save'

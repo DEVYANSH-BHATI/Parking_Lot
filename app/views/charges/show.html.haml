@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Vehicle type:
+  = @charge.vehicle_type
+%p
+  %b Min charge:
+  = @charge.min_charge
+%p
+  %b Min hours:
+  = @charge.min_hours
+%p
+  %b Extra hour charges:
+  = @charge.extra_hour_charges
+
+= link_to 'Edit', edit_charge_path(@charge)
+\|
+= link_to 'Back', charges_path

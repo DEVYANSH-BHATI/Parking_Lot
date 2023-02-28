@@ -43,7 +43,11 @@
         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
           <button type="button" tabindex="0" class="dropdown-item">User Account</button>
           <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-          <button type="button" tabindex="0" class="dropdown-item">Log out</button>
+          <button type="button" tabindex="0" class="dropdown-item">
+            <% if current_user %>
+            <%= button_to "log_out", destroy_user_session_path, method: :delete, class:"btn btn" %>
+            <% end %>
+          </button>
         </div>
       </div>
     </div>
