@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'charges/charges'
     devise_for :users, controllers: {
       registrations: 'users/registrations',
       sessions: 'users/sessions',
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       unlocks: 'users/unlocks'
     }
+    # get '/vehicles' , to: redirect('/vehicles'),as: 'jake'
     resources :vehicles
     root "home#index"
 
