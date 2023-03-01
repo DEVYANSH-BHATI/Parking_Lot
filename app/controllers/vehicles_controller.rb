@@ -1,9 +1,15 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
+  # before_action :charges if :is_Admin
+
+
+  # def charges
+  #   render charges
+  # end
 
 
   def dash
-    render vehicles
+    # render vehicles
   end
 
   # GET /vehicles or /vehicles.json

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     }
 
-    get "/vehicles",to: "vehicles#index"
+    # get "/vehicles",to: "vehicles#index" , as: "Welcome"
     resources :vehicles
 
     root "home#index"
