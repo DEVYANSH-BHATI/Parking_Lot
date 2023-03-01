@@ -45,7 +45,7 @@
           <button type="button" tabindex="0" class="dropdown-item">Settings</button>
           <button type="button" tabindex="0" class="dropdown-item">
             <% if current_user %>
-            <%= button_to "log_out", destroy_user_session_path, method: :delete, class:"btn btn" %>
+            <%= button_to "sign_out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
             <% end %>
           </button>
         </div>
@@ -58,9 +58,29 @@
       <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
           <ul class="vertical-nav-menu">
-            <li class="app-sidebar__heading">Dashboards</li>
+            <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
+            
             <li class="app-sidebar__heading">
-             <%= link_to "Parked vehicles", vehicles_path %></li>
+             <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "Parked vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "Left vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "New vehicles", new_vehicle_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "Vehicles Charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "New charge", new_charge_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
+             <li class="app-sidebar__heading">
+             <%= link_to "Update charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+             </li>
           </ul>
         </div>
       </div>
@@ -72,7 +92,7 @@
           <div class="col-md-12">
             <div class="main-card mb-3 card">
               <div class="card-header">
-                <div class="row ">
+                <div class="row">
                   <div class="col">
                     <button type="button" class="btn-shadow btn btn-info">Name/Number</button>
                   </div>
@@ -85,9 +105,7 @@
                   <div class="col">
                     <button type="button" class="btn-shadow btn btn-info">Car</button>
                   </div>
-                  <div class="col">
-                    <button type="button" class="btn-shadow btn btn-info"><%= link_to "Add", new_vehicle_path %></button>
-                  </div>
+
                 </div>
                 <div class="col">
                   <div class="search-wrapper float-end">
@@ -104,6 +122,7 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
+                      <th class="text-center">Name/Number</th>
                       <th>Charge_id</th>
                       <th class="text-center">Vehicle No</th>
                       <th class="text-center">In time</th>
