@@ -58,9 +58,8 @@
 
           <div class="input-group mb-3 d-flex justify-content-center">
             <div class="input-group-text ">
-              <input class="form-check-input mt-0" type="checkbox" value="" id="form2Example33" aria-label="Checkbox for following text input">
-              <label for="form2Example33"> Creating Admin account </label>
-
+              <%= f.check_box :is_Admin , class: "form-check-input mt-0"%>
+              <%= f.label :is_Admin  , class: "form-label"%>
             </div>
           </div>
 

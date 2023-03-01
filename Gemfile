@@ -2,7 +2,7 @@
   git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
   ruby "3.1.3"
-
+  gem 'pry', '~> 0.13.1'
   gem "haml-rails"
   # for bootstrap
   gem 'bootstrap'
