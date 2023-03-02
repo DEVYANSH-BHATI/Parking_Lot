@@ -1,8 +1,13 @@
 <div class="form container">
 
-     <h1>New vehicle</h1>
-      <%= render "form", vehicle: @vehicle %>
-      <br>
+      <% if current_user.is_Admin %>
+        <h1>New vehicle</h1>
+            <%= p current_user.is_Admin.inspect%>
+            <%= render "form", vehicle: @vehicle %>
+          <br>
+        <% else %>
+        <%= render "shared/not_admin"%>
+      <% end %>
      <div>
        <%= link_to "Back to vehicles", vehicles_path %>
      </div>

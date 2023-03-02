@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
-  # before_action :charges if :is_Admin
+  
 
 
   # def charges
@@ -23,7 +23,10 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
+    p params
+    # if params. == true then
+      @vehicle = Vehicle.new
+    # end
   end
 
   # GET /vehicles/1/edit
@@ -32,7 +35,9 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    if is_Admin == true then
+      @vehicle = Vehicle.new(vehicle_params)
+    end
 
     respond_to do |format|
       if @vehicle.save

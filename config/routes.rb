@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     }
 
+    get 'shared/_not_admin'
+
     # get "/vehicles",to: "vehicles#index" , as: "Welcome"
     resources :vehicles
 
