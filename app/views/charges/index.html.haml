@@ -20,7 +20,7 @@
         %td= charge.extra_hour_charges
         %td= link_to 'Show', charge
         %td= link_to 'Edit', edit_charge_path(charge)
-        %td= link_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= button_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

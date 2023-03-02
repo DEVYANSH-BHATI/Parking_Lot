@@ -59,7 +59,7 @@
         <div class="app-sidebar__inner">
           <ul class="vertical-nav-menu">
             <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
-            
+
             <li class="app-sidebar__heading">
              <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
              </li>
@@ -94,16 +94,16 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn-shadow btn btn-info">Name/Number</button>
+                    <button type="button" class="btn-shadow btn btn-outline-secondary">Name/Number</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn-shadow btn btn-info">Vehicle No.</button>
+                    <button type="button" class="btn-shadow btn btn-outline-success">VehicleNo</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn-shadow btn btn-info">Bike</button>
+                    <button type="button" class="btn-shadow btn btn-outline-danger">Bike</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn-shadow btn btn-info">Car</button>
+                    <button type="button" class="btn-shadow btn btn-outline-danger">Car</button>
                   </div>
 
                 </div>
@@ -123,10 +123,11 @@
                     <tr>
                       <th class="text-center">#</th>
                       <th class="text-center">Name/Number</th>
-                      <th>Charge_id</th>
+                      <th class="text-center">Type</th>
                       <th class="text-center">Vehicle No</th>
                       <th class="text-center">In time</th>
                       <th class="text-center">Out time</th>
+                      <th class="text-center">Total Hours</th>
                       <th class="text-center">Charges</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Actions(User)</th>
@@ -134,11 +135,11 @@
                   </thead>
                   <% @vehicles.each do |vehicle| %>
                   <%= render vehicle %>
-                  <td>
+                  <%# <td>
                     <p>
                       <%= link_to "Show this vehicle", vehicle %>
-                    </p>
-                  </td>
+                    <%# </p>
+                  </td>  %>
                   <% end %>
                 </table>
               </div>
