@@ -20,13 +20,13 @@
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <%= f.label :firstName, { class: "form-label"} %>
+                  <%= f.label :First Name, { class: "form-label"} %>
                   <%= f.text_field :firstName, {class: "form-control" } %>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div class="form-outline">
-                  <%= f.label :lastName, {class: "form-label" } %>
+                  <%= f.label :Last Name, {class: "form-label" } %>
                   <%= f.text_field :lastName, {class: "form-control" } %>
                 </div>
               </div>
@@ -56,12 +56,13 @@
 
             <br>
 
-          <div class="input-group mb-3 d-flex justify-content-center">
-            <div class="input-group-text ">
-              <%= f.check_box :is_Admin , class: "form-check-input mt-0"%>
-              <%= f.label :is_Admin  , class: "form-label"%>
+            <% if devise_mapping.rememberable? %>
+            <div class="form-check d-flex justify-content-start mb-4">
+              <%= f.check_box :is_Admin, {class: "form-check-input"} %>
+              <%= f.label :"Creating Admin account", {class: "form-check-label"} %>
             </div>
-          </div>
+            <% end %>
+
 
             <div class="actions">
               <%= f.submit "Sign up", { class: "btn btn-primary btn-block mb-4" }%>

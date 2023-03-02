@@ -52,8 +52,31 @@
           <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
               <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">Dashboards</li>
-                <li class="app-sidebar__heading"><%= link_to "Parked vehicles", vehicles_path %></li>
+                <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
+                <li class="app-sidebar__heading ">
+                  <%= button_to "Delete this Vehicle", @vehicle, method: :delete, class: "btn-shadow btn btn-danger"%>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "Parked vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "Left vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "New vehicles", new_vehicle_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "Vehicles Charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "New charge", new_charge_path, class: "btn-shadow btn btn-outline-info" %>
+                </li>
+                <li class="app-sidebar__heading">
+                  <%= link_to "Update charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+               </li>
               </ul>
             </div>
           </div>
@@ -71,9 +94,6 @@
                       </div>
                       <div class="col">
                         <button type="button" class="btn-shadow btn btn-info"><%= link_to "Back to vehicles", vehicles_path %></button>
-                      </div>
-                      <div class="col">
-                        <%=  button_to "Destroy this vehicle", @vehicle, method: :delete%>
                       </div>
 
                     </div>
@@ -93,7 +113,7 @@
                         <tr>
                           <th class="text-center">#</th>
                           <th>Charge_id</th>
-                          <th class="text-center">Number</th>
+                          <th class="text-center">Vehicles No</th>
                           <th class="text-center">In time</th>
                           <th class="text-center">Out time</th>
                           <th class="text-center">Charges</th>
