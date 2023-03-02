@@ -9,6 +9,9 @@
   # Bootstrap JavaScript can optionally use jQuery. If you're using Rails 5.1+, you can add the jquery-rails gem to your Gemfile:
   gem 'jquery-rails'
 
+  # for time difference
+  gem 'time_difference'
+
   # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
   gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 

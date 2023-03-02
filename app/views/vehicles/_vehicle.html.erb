@@ -1,13 +1,17 @@
 <div id="<%= dom_id vehicle %>">
   <tbody>
   <tr>
-     <th class="text-center text-muted"><%= vehicle.id %></th>
+    <th class="text-center text-muted"><%= vehicle.id %></th>
+    <td>
+      <div class="widget-heading"><%= link_to vehicle.owner, vehicle %></div>
+    </td>
     <td>
       <div class="widget-heading"><%= vehicle.charge_id %></div>
     </td>
     <td class="text-center"><%= vehicle.number %></td>
     <td class="text-center"> <%= vehicle.in_time %></td>
     <td class="text-center"><%= vehicle.out_time %></td>
+    <td class="text-center"><%= 6 %></td>
     <td class="text-center"> <%= vehicle.charges %></td>
     <td class="text-center">
       <div><%= vehicle.status %></div>

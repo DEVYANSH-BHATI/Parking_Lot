@@ -12,6 +12,10 @@
   <% end %>
 
   <div>
+    <%= form.label :"Name/Number", style: "display: block" %>
+    <%= form.text_field :owner %>
+  </div>
+  <div>
     <%= form.label :"charge Id", style: "display: block" %>
     <%= form.number_field :charge_id %>
   </div>
