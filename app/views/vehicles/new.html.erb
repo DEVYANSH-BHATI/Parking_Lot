@@ -1,6 +1,7 @@
 <div class="form container">
 
-      <% if current_user.is_Admin %>
+  <%=p current_user.inspect %>
+  <% if current_user.is_Admin %>
         <h1>New vehicle</h1>
             <%= p current_user.is_Admin.inspect%>
             <%= render "form", vehicle: @vehicle %>

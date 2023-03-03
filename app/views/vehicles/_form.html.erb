@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :"charge Id", style: "display: block" %>
-    <%= form.number_field :charge_id %>
+    <%= form.label :"charges Id", style: "display: block" %>
+    <%= form.number_field :charges_id %>
   </div>
 
   <div>
@@ -42,8 +42,8 @@
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+    <%= form.label :"user_id=#{current_user.id} ,name=#{current_user.firstName}", style: "display: block" %>
+    <%= form.number_field :user_id,value: current_user.id ,:type =>"hidden"%>
   </div>
 
   <div>
