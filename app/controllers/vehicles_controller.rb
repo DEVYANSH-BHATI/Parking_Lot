@@ -35,7 +35,7 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-
+    # binding.pry
     if current_user.is_Admin == true then
       @vehicle = Vehicle.new(vehicle_params)
     end
@@ -82,6 +82,6 @@ class VehiclesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
-      params.require(:vehicle).permit(:charge_id, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
+      params.require(:vehicle).permit(:charges_id, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
     end
 end
