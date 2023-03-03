@@ -35,7 +35,8 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    if is_Admin == true then
+
+    if current_user.is_Admin == true then
       @vehicle = Vehicle.new(vehicle_params)
     end
 
