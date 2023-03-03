@@ -1,0 +1,49 @@
+<div class="app-header header-shadow">
+    <div class="app-header__logo">
+      <div class="logo-sr"><strong>PARKING LOT</strong></div>
+
+      <div class="header__pane ml-auto">
+        <div>
+          <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="app-header__mobile-menu">
+      <div>
+        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="app-header__menu">
+      <span>
+        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+          Admin
+        </button>
+      </span>
+    </div>
+    <div class="app-header__content">
+      <div class="app-header-right">
+        <a data-toggle="dropdown" class="p-0 btn">
+          <div class="">
+            <%= current_user.firstName%>
+          </div>
+        </a>
+        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+          <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+          <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+          <button type="button" tabindex="0" class="dropdown-item">
+            <% if current_user %>
+            <%= button_to "sign_out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
+            <% end %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
