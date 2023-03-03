@@ -54,7 +54,7 @@
               <ul class="vertical-nav-menu">
                 <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
                 <li class="app-sidebar__heading ">
-                  <%= button_to "Delete this Vehicle", @vehicle, method: :delete, class: "btn-shadow btn btn-danger"%>
+                  <%= button_to "Delete this Vehicle", @vehicle, method: :delete, class: "btn-shadow btn btn-outline-info"%>
                 </li>
                 <li class="app-sidebar__heading">
                   <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
@@ -90,11 +90,12 @@
                   <div class="card-header">
                     <div class="row ">
                       <div class="col">
-                        <button type="button" class="btn-shadow btn btn-info"><%= link_to "Edit this vehicle", edit_vehicle_path(@vehicle) %> </button>
+                        <button type="button" class="btn-shadow btn btn-outline-info"><%= link_to "Edit this vehicle", edit_vehicle_path(@vehicle) %> </button>
                       </div>
-                      <div class="col">
-                        <button type="button" class="btn-shadow btn btn-info"><%= link_to "Back to vehicles", vehicles_path %></button>
-                      </div>
+                      <%# <div class="col"> %>
+                        <%# <button type="button" class="btn-shadow btn btn-outline-info"><%= link_to "Back to vehicles", vehicles_path %>
+                        <%# </button> %>
+                      <%# </div> %>
 
                     </div>
                     <div class="col">
@@ -112,10 +113,12 @@
                       <thead>
                         <tr>
                           <th class="text-center">#</th>
-                          <th>Charge_id</th>
+                          <th class="text-center">Name/Number</th>
+                          <th class="text-center">Type</th>
                           <th class="text-center">Vehicles No</th>
                           <th class="text-center">In time</th>
                           <th class="text-center">Out time</th>
+                          <th class="text-center">Total Hours</th>
                           <th class="text-center">Charges</th>
                           <th class="text-center">Status</th>
                           <th class="text-center">Actions(User)</th>
