@@ -11,14 +11,13 @@
     <td class="text-center"><%= vehicle.number %></td>
     <td class="text-center"> <%= vehicle.in_time %></td>
     <td class="text-center"><%= vehicle.out_time %></td>
-    <td class="text-center"><%= 6 %></td>
+    <td class="text-center"><%= 6 %></td>  <!--#total hours column -->
     <td class="text-center"> <%= vehicle.charges %></td>
     <td class="text-center">
       <div><%= vehicle.status %></div>
     </td>
     <td class="text-center">
-      <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm"><%= vehicle.user_id %></button>
-    </td>
+      <%= link_to 'pay_charge' ,charge_vehicle_path(vehicle),class: "btn btn-primary"  %>
   </tr>
 
 </tbody>
