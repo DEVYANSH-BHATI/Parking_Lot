@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy ]
-  
+
 
 
   # def charges
@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.search(params[:search])
   end
 
   # GET /vehicles/1 or /vehicles/1.json
