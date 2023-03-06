@@ -17,13 +17,19 @@
                     %button.btn-shadow.btn.btn-outline-secondary{:type => "button"} Vehicle
                   .col
                     %button.btn-shadow.btn.btn-outline-success{:type => "button"} charge
-                .col
-                  .search-wrapper.float-end
-                    .input-holder
-                      %input.search-input{:placeholder => "Type to search", :type => "text"}/
-                      %button.search-icon
-                        %span
-                    %button.close
+
+                  .col
+                    = form_tag charges_path, :method => 'get', style: "padding : 0px; margin : auto;" do
+                      = search_field_tag :search, params[:search], class: "search-input", placeholder: "type to search"
+                      = button_tag "search", class: "search-icon"
+                      %button.close
+                -# .col
+                -#   .search-wrapper.float-end
+                -#     .input-holder
+                -#       %input.search-input{:placeholder => "Type to search", :type => "text"}/
+                -#       %button.search-icon
+                -#         %span
+                -#     %button.close
               .table-responsive
                 %table.align-middle.mb-0.table.table-borderless.table-striped.table-hover
                   %thead

@@ -46,9 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_105505) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "owner"
     t.bigint "user_id"
     t.bigint "charges_id"
-    t.string "owner"
     t.index ["charges_id"], name: "index_vehicles_on_charges_id"
     t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
