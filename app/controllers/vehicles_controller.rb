@@ -1,11 +1,11 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy ]
+  before_action :set_vehicle, only: %i[ show edit update destroy charge ]
   
 
 
-  # def charges
-  #   render charges
-  # end
+  def charge
+
+  end
 
 
   def dash
