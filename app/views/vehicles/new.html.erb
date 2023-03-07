@@ -1,13 +1,19 @@
-<div class="form container">
-  <% if current_user.is_Admin %>
-        <h1>New vehicle</h1>
-
-            <%= render "form", vehicle: @vehicle %>
-          <br>
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+  <%= render "shared/dashboard_header" %>
+  <div class="app-main">
+    <%= render "shared/dashboard_sidebar" %>
+     <div class="form container">
+        <% if current_user.is_Admin %>
+         <h1>New vehicle</h1>
+          <%= render "form", vehicle: @vehicle %>
+         <br>
         <% else %>
-        <%= render "shared/not_admin"%>
-      <% end %>
-     <div>
-       <%= link_to "Back to vehicles", vehicles_path %>
+         <%= render "shared/not_admin"%>
+       <% end %>
+       <div>
+        <%= link_to "Back to vehicles", vehicles_path %>
+       </div>
      </div>
+  </div>
 </div>
+

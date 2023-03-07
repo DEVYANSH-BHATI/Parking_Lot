@@ -3,11 +3,6 @@ class VehiclesController < ApplicationController
 
   before_action :authenticate_user!
   # layout 'application'
-  
-
-
-
-
 
 
   def dash
@@ -39,7 +34,7 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    binding.pry
+    # binding.pry
     if current_user.is_Admin == true then
       @vehicle = Vehicle.new(vehicle_params)
     end
