@@ -6,6 +6,7 @@ class Vehicle < ApplicationRecord
     #validations
     validates_presence_of :charges_id,:number,:in_time,:out_time,:user_id
 
+
     # search
     def self.search(search)
         if search
@@ -14,5 +15,6 @@ class Vehicle < ApplicationRecord
             all
         end
     end
+
 
 end
