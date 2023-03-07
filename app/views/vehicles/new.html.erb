@@ -4,7 +4,8 @@
     <%= render "shared/dashboard_sidebar" %>
      <div class="form container">
         <% if current_user.is_Admin %>
-         <h1>New vehicle</h1>
+         <h1 class="h1 display-1">Welcome <%=current_user.firstName %> </h1>
+         <h1>add New vehicle</h1>
           <%= render "form", vehicle: @vehicle %>
          <br>
         <% else %>

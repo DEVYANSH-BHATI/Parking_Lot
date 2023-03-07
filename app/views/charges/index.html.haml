@@ -50,6 +50,12 @@
                           %td.text-center= charge.min_charge
                           %td.text-center= charge.min_hours
                           %td.text-center= charge.extra_hour_charges
-                          %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info', style: 'margin-top: -35px;'
-                          %td.text-center= link_to 'Edit', edit_charge_path(charge)
+                          -if current_user.is_Admin
+                            %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info', style: 'margin-top: -35px;'
+                          -else
+                            %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info disabled', style: 'margin-top: -35px;'
+                          -if current_user.is_Admin
+                            %td.text-center= link_to 'Edit', edit_charge_path(charge)
+                          -else
+                            %td.text-center= link_to 'Edit', edit_charge_path(charge),class: "disabled"
 
