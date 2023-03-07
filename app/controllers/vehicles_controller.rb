@@ -1,8 +1,10 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy charge ]
+
   before_action :authenticate_user!
   # layout 'application'
   
+
 
 
 
@@ -14,8 +16,9 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @vehicles = Vehicle.all
-    # @hours = (self.out_time - self.in_time)/3600
+
+    @vehicles = Vehicle.search(params[:search])
+
   end
 
   # GET /vehicles/1 or /vehicles/1.json
