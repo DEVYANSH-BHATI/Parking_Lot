@@ -16,7 +16,7 @@
                         <button type="button" class="btn-shadow btn btn-outline-info"><%= link_to "Edit this vehicle", edit_vehicle_path(@vehicle) %> </button>
                       </div>
                       <div class="col">
-                        <%= button_to "Delete this Vehicle", @vehicle, method: :delete, class: "btn-shadow btn btn-outline-info"%>
+                        <%= button_to "Delete this Vehicle", @vehicle, method: :delete, class: "btn-shadow btn btn-outline-info", style: 'margin-top: -1px;'%>
                       </div>
                       <%# <div class="col">
                         <button type="button" class="btn-shadow btn btn-outline-info"><%= link_to "Back to vehicles", vehicles_path %>
