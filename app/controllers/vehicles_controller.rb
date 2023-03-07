@@ -1,11 +1,13 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy charge ]
 
+  before_action :authenticate_user!
+  # layout 'application'
+  
 
 
-  def charge
 
-  end
+
 
 
   def dash
@@ -14,7 +16,9 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
+
     @vehicles = Vehicle.search(params[:search])
+
   end
 
   # GET /vehicles/1 or /vehicles/1.json
@@ -35,10 +39,11 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    # binding.pry
+    binding.pry
     if current_user.is_Admin == true then
       @vehicle = Vehicle.new(vehicle_params)
     end
+
 
     respond_to do |format|
       if @vehicle.save

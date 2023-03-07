@@ -11,13 +11,19 @@ Rails.application.routes.draw do
 
     get 'shared/_not_admin'
 
-    # get "/vehicles",to: "vehicles#index" , as: "Welcome"
+    get "/vehicles",to: "vehicles#index" , as: "Welcome"
     resources :vehicles do
       member do
         get :charge
       end
     end
+     resources :charges do
+       member do
+        get :charge
+       end
+     end
 
-    root "home#index"
+    # root "home#index"
+    root "vehicles#index"
 
   end

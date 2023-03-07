@@ -1,5 +1,11 @@
 class ChargesController < ApplicationController
-  before_action :set_charge, only: %i[ show edit update destroy ]
+  before_action :set_charge, only: %i[ show edit update destroy charges_cal ]
+
+
+
+  def charges_cal
+
+  end
 
   # GET /charges or /charges.json
   def index
