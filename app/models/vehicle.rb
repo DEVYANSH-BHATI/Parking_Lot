@@ -11,7 +11,7 @@ class Vehicle < ApplicationRecord
     # search
     def self.search(search)
         if search
-            where("lower(owner) LIKE :search OR lower(number) LIKE :search OR lower(status) LIKE :search", search: "%#{search}%")
+            where("owner ILIKE :search OR number ILIKE :search OR status ILIKE :search", search: "%#{search}%")
         else
             all
         end
