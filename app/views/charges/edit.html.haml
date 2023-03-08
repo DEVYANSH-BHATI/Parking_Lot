@@ -1,12 +1,9 @@
-.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header
-  = render 'shared/dashboard_header'
-  .app-main
-    = render 'shared/dashboard_sidebar'
-    .form.container
-      - if current_user.is_Admin
-        %h1 Editing charge
-        = render "form"
-      - else
-        = render "shared/not_admin"
 
-      = link_to 'Back', charges_path
+.form.container
+  - if current_user.is_Admin
+    %h1 Editing charge
+    = render "form"
+  - else
+    = render "shared/not_admin"
+
+  = link_to 'Back', charges_path

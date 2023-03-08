@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
     }
 
-    get 'shared/_not_admin'
+  get 'shared/_not_admin'
 
-    get "/vehicles",to: "vehicles#index" , as: "Welcome"
+  get "/vehicles",to: "vehicles#index" , as: "Welcome"
     resources :vehicles do
       member do
         get :charge

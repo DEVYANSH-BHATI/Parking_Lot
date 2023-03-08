@@ -4,13 +4,14 @@ class Vehicle < ApplicationRecord
     has_one :user
 
     #validations
-    validates_presence_of :charges_id,:number,:in_time,:out_time,:user_id
+    validates_presence_of :vehicle_type,:number,:in_time,:out_time,:user_id
+    validates :out_time ,comparison: {greater_than: :in_time}
 
 
     # search
     def self.search(search)
         if search
-            where("lower(owner) LIKE :search OR lower(number) LIKE :search OR lower(status) LIKE :search", search: "%#{search}%")
+            where("owner ILIKE :search OR number ILIKE :search OR status ILIKE :search", search: "%#{search}%")
         else
             all
         end

@@ -5,6 +5,8 @@ class VehiclesController < ApplicationController
   # layout 'application'
 
 
+
+
   def dash
     # render vehicles
   end
@@ -22,8 +24,9 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    p params
+    # p params
     # if params. == true then
+      @charges = Charge.all.pluck(:vehicle_type)
       @vehicle = Vehicle.new
     # end
   end
@@ -34,10 +37,8 @@ class VehiclesController < ApplicationController
 
   # POST /vehicles or /vehicles.json
   def create
-    # binding.pry
-    if current_user.is_Admin == true then
+    binding.pry
       @vehicle = Vehicle.new(vehicle_params)
-    end
 
 
     respond_to do |format|
@@ -82,6 +83,6 @@ class VehiclesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
-      params.require(:vehicle).permit(:charges_id, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
+      params.require(:vehicle).permit(:vehicle_type, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
     end
 end

@@ -1,55 +1,58 @@
 / <p style="color: green"><haml_loud> notice </haml_loud></p>
 / <p style="color: green"><haml_loud> </haml_loud></p>
-.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header
-  = render 'shared/dashboard_header'
-  .app-main
-    = render 'shared/dashboard_sidebar'
-    .app-main__outer
-      .app-main__inner
-        .app-page-title.text-center
-          %strong Parking Lot Dashboard
-        .row
-          .col-md-12
-            .main-card.mb-3.card
-              .card-header
-                .row
-                  .col
-                    %button.btn-shadow.btn.btn-outline-secondary{:type => "button"} Vehicle
-                  .col
-                    %button.btn-shadow.btn.btn-outline-success{:type => "button"} charge
 
-                  .col
-                    = form_tag charges_path, :method => 'get', style: "padding : 0px; margin : auto;" do
-                      = search_field_tag :search, params[:search], class: "search-input", placeholder: "type to search"
-                      = button_tag "search", class: "btn-shadow btn btn-light", style: "padding : 8px; margin-top : 1px;"
-                      %button.close
-                -# .col
-                -#   .search-wrapper.float-end
-                -#     .input-holder
-                -#       %input.search-input{:placeholder => "Type to search", :type => "text"}/
-                -#       %button.search-icon
-                -#         %span
-                -#     %button.close
-              .table-responsive
-                %table.align-middle.mb-0.table.table-borderless.table-striped.table-hover
-                  %thead
+.app-main__outer
+  .app-main__inner
+    .app-page-title.text-center
+      %strong Parking Lot Dashboard
+    .row
+      .col-md-12
+        .main-card.mb-3.card
+          .card-header
+            .row
+              .col
+                %button.btn-shadow.btn.btn-outline-secondary{:type => "button"} Vehicle
+              .col
+                %button.btn-shadow.btn.btn-outline-success{:type => "button"} charge
+
+              .col
+                = form_tag charges_path, :method => 'get', style: "padding : 0px; margin : auto;" do
+                  = search_field_tag :search, params[:search], class: "search-input", placeholder: "type to search"
+                  = button_tag "search", class: "btn-shadow btn btn-light", style: "padding : 8px; margin-top : 1px;"
+                  %button.close
+            -# .col
+            -#   .search-wrapper.float-end
+            -#     .input-holder
+            -#       %input.search-input{:placeholder => "Type to search", :type => "text"}/
+            -#       %button.search-icon
+            -#         %span
+            -#     %button.close
+          .table-responsive
+            %table.align-middle.mb-0.table.table-borderless.table-striped.table-hover
+              %thead
+                %tr
+                  %th.text-center #
+                  %th.text-center Vehicle type
+                  %th.text-center Min charge
+                  %th.text-center Min hours
+                  %th.text-center Extra hour
+                  %th.text-center Destroy
+                  %th.text-center Update
+
+                %tbody
+                  - @charges.each do |charge|
                     %tr
-                      %th.text-center #
-                      %th.text-center Vehicle type
-                      %th.text-center Min charge
-                      %th.text-center Min hours
-                      %th.text-center Extra hour
-                      %th.text-center Destroy
-                      %th.text-center Update
-
-                    %tbody
-                      - @charges.each do |charge|
-                        %tr
-                          %td.text-center= charge.id
-                          %td.text-center= charge.vehicle_type
-                          %td.text-center= charge.min_charge
-                          %td.text-center= charge.min_hours
-                          %td.text-center= charge.extra_hour_charges
-                          %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info', style: 'margin-top: -35px;'
-                          %td.text-center= link_to 'Edit', edit_charge_path(charge)
+                      %td.text-center= charge.id
+                      %td.text-center= charge.vehicle_type
+                      %td.text-center= charge.min_charge
+                      %td.text-center= charge.min_hours
+                      %td.text-center= charge.extra_hour_charges
+                      -if current_user.is_Admin
+                        %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info', style: 'margin-top: -35px;'
+                      -else
+                        %td.text-center= button_to 'Delete', charge, method: :delete, class: 'btn-shadow btn btn-outline-info disabled', style: 'margin-top: -35px;'
+                      -if current_user.is_Admin
+                        %td.text-center= link_to 'Edit', edit_charge_path(charge)
+                      -else
+                        %td.text-center= link_to 'Edit', edit_charge_path(charge),class: "disabled"
 
