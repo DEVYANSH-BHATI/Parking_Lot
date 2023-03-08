@@ -15,11 +15,11 @@
              <%= link_to "Left vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
              </li>
 
-            <% if current_user.is_Admin %>
+
              <li class="app-sidebar__heading">
-             <%= link_to "Vehicle Master", new_vehicle_path, class: "btn-shadow btn btn-outline-info" %>
+             <%= link_to "new Vehicle in", new_vehicle_path, class: "btn-shadow btn btn-outline-info" %>
              </li>
-              <% end %>
+
 
              <li class="app-sidebar__heading">
              <%= link_to "Vehicles Charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
@@ -27,14 +27,15 @@
 
             <% if current_user.is_Admin %>
              <li class="app-sidebar__heading">
-             <%= link_to "Add new Charge", new_charge_path, class: "btn-shadow btn btn-outline-info" %>
+             <%= link_to "Master Vehicles(c)", new_charge_path, class: "btn-shadow btn btn-outline-warning" %>
              </li>
               <% end %>
             <% if current_user.is_Admin %>
-             <li class="app-sidebar__heading">
-             <%= link_to "Update charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
-             </li>
-              <% end %>
+               <li class="app-sidebar__heading">
+               <%= link_to "Update charge", charges_path, class: "btn-shadow btn btn-outline-warning" %>
+               </li>
+            <% end %>
+
           </ul>
         </div>
       </div>

@@ -28,8 +28,23 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 <!--      <p> Hai this is muthu</p>-->
+      <% if user_signed_in? %>
+      <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <%= render "shared/dashboard_header" %>
+      <% end %>
+        <% if user_signed_in? %>
+        <div class="app-main">
+          <%= render "shared/dashboard_sidebar" %>
+      <% end %>
+          <%= yield %>
+      <% if user_signed_in? %>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+
 <!--      <p> Hai this is muthu</p>-->
  <%= render "shared/footer"%>
     <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>

@@ -4,7 +4,7 @@ class Vehicle < ApplicationRecord
     has_one :user
 
     #validations
-    validates_presence_of :charges_id,:number,:in_time,:out_time,:user_id
+    validates_presence_of :vehicle_type,:number,:in_time,:out_time,:user_id
     validates :out_time ,comparison: {greater_than: :in_time}
 
 

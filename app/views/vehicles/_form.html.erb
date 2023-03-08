@@ -12,12 +12,17 @@
   <% end %>
 
   <div>
-    <%= form.label :"Name/Number", style: "display: block" %>
+    <%= form.label :"Name of owner", style: "display: block" %>
     <%= form.text_field :owner %>
   </div>
   <div>
-    <%= form.label :"charge Id", style: "display: block" %>
-    <%= form.number_field :charges_id %>
+    <%= form.label :vehicle_type,"Vehicle Type", style: "display: block" %>
+    <%= form.select(:vehicle_type) do %>
+      <% @charges.each do |l| -%>
+        <%= content_tag(:option, l, value: l) %>
+      <% end %>
+    <% end %>
+    <%#= form.select :vehicle_type ,@charges %>
   </div>
 
   <div>
