@@ -4,8 +4,14 @@
   ruby "3.1.3"
   gem 'pry', '~> 0.13.1'
   gem "haml-rails"
+
+  # pagination
+  gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+
+  gem 'pagy'
   # for bootstrap
   gem 'bootstrap'
+
   # Bootstrap JavaScript can optionally use jQuery. If you're using Rails 5.1+, you can add the jquery-rails gem to your Gemfile:
   gem 'jquery-rails'
 

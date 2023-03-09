@@ -14,8 +14,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
 
-    @vehicles = Vehicle.search(params[:search])
-
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 5)
   end
 
   # GET /vehicles/1 or /vehicles/1.json
@@ -33,11 +32,12 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
+    @charges = Charge.all.pluck(:vehicle_type)
   end
 
   # POST /vehicles or /vehicles.json
   def create
-    binding.pry
+    # binding.pry
       @vehicle = Vehicle.new(vehicle_params)
 
 
