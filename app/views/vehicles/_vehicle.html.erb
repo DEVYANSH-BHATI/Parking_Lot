@@ -10,9 +10,21 @@
     </td>
     <td class="text-center"><%= vehicle.number %></td>
     <td class="text-center"> <%= vehicle.in_time %></td>
-    <td class="text-center"><%= vehicle.out_time %></td>
-    <td class="text-center"><%= (vehicle.out_time - vehicle.in_time)/(3600) %></td>  <!--#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
-    <td class="text-center"> <%= vehicle.charges %></td>
+
+
+    <%if vehicle.out_time %>
+      <td class="text-center"><%= vehicle.out_time %></td>
+    <% else %>
+      <td class="text-center">nil</td>
+    <% end %>
+
+
+    <%if vehicle.out_time %>
+      <td class="text-center"><%= (vehicle.out_time - vehicle.in_time)/(3600) %></td>  <!--#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
+    <% else %>
+      <td class="text-center">nil</td>
+    <% end %>
+      <td class="text-center"> <%= vehicle.charges %></td>
     <td class="text-center">
       <div><%= vehicle.status %></div>
     </td>
