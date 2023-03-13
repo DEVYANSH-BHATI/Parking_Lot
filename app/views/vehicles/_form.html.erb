@@ -30,16 +30,6 @@
     <%= form.text_field :number %>
   </div>
 
-
-
-
-
-  <div>
-    <%= form.label :charges, style: "display: block" %>
-    <%= form.number_field :charges %>
-  </div>
-
-
   <div>
     <%= form.label :"user_id=#{current_user.id} ,name=#{current_user.firstName}", style: "display: block" %>
     <%= form.number_field :user_id,value: current_user.id %>

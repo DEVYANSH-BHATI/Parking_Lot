@@ -1,11 +1,23 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy charge ]
+  before_action :set_vehicle, only: %i[ show edit update destroy charge leaving ]
   before_action :set_vehicle_type, only: %i[ new edit create ]
 
   before_action :authenticate_user!
   # layout 'application'
 
 
+  def leaving
+    # binding.pry
+    @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
+    # pp @charges.inspect
+    # pp @vehicle.inspect
+    pp self , 'asdfsdfsdf'
+    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
+    # self.put_out_time
+
+
+
+  end
 
 
   def dash
