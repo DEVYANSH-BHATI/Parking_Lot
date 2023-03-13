@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
 
-    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 5)
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 6)
   end
 
   # GET /vehicles/1 or /vehicles/1.json

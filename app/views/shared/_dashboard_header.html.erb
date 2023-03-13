@@ -31,16 +31,16 @@
     <div class="app-header__content">
       <div class="app-header-right">
         <a data-toggle="dropdown" class="p-0 btn">
-          <div class="">
-            <%= current_user.firstName%>
+          <div class="btn btn-outline-info">
+            <strong><%= current_user.firstName %></strong>
           </div>
         </a>
         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-          <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-          <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+          <button type="button" tabindex="0" class="dropdown-item"> <%= link_to "User Account", users_path , class: "btn btn-outline-info" %> </button>
+          <%# <button type="button" tabindex="0" class="dropdown-item">Settings</button> %>
           <button type="button" tabindex="0" class="dropdown-item">
             <% if current_user %>
-            <%= button_to "sign_out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
+            <%= button_to "sign_out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger", style: "margin: 20px;" %>
             <% end %>
           </button>
         </div>
