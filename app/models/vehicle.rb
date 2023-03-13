@@ -6,10 +6,7 @@ class Vehicle < ApplicationRecord
     #validations
     validates_uniqueness_of :number
     validates_presence_of :vehicle_type,:number,:owner
-    # validates :out_time ,comparison: {greater_than: :in_time}
     validates :status ,:inclusion => %w[ parked left ]
-    # valid                                      {accepted |parked,left|}
-    # before_validation put intime function
     before_validation  :put_intime_and_status , on: :create
 
     def put_intime_and_status
@@ -20,6 +17,22 @@ class Vehicle < ApplicationRecord
     end
     # out tiem at press of button should trigger
     def put_out_time
+        self.out_time = DateTime.now
+    end
+
+    def put_charges(min_charge,min_hours,extra_hour_charges,total_hours)
+        # pp min_charge,min_hours,extra_hour_charges,total_hours
+        # so what we gonna do is check if total hours compares with min hours if lesser than populate self.status left , self.charge = mincharge
+        # else make new var and put mincharge + totalhours-minhours*extrahours and populate self.charge with that
+
+        if total_hours < min_hours then
+            self.status = 'left'
+            self.charges = min_charge
+        else
+            total_charges = min_charge + (extra_hour_charges*(total_hours - min_hours))
+            self.status = 'left'
+            self.charges = total_charges
+        end
 
     end
 
