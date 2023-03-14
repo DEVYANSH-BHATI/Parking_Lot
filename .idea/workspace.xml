@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2738ce22-3e10-4c91-b567-99063b2d895c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/parking-lot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parking-lot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/vehicle.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/vehicle.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/leaving.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/leaving.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +204,7 @@
       <workItem from="1678454949302" duration="137000" />
       <workItem from="1678727011338" duration="648000" />
       <workItem from="1678737677074" duration="1699000" />
-      <workItem from="1678762721682" duration="771000" />
+      <workItem from="1678762721682" duration="1449000" />
     </task>
     <servers />
   </component>
