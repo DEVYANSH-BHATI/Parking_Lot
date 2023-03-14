@@ -1,10 +1,24 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy charge ]
+  before_action :set_vehicle, only: %i[ show edit update destroy charge leaving ]
+  before_action :set_vehicle_type, only: %i[ new edit create ]
 
   before_action :authenticate_user!
   # layout 'application'
 
 
+  def leaving
+    # binding.pry
+    @vehicle.out_time = DateTime.now
+    @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
+    # pp @charges.inspect
+    # pp @vehicle.inspect
+    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,@vehicle.in_time,@vehicle.out_time)
+    # @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
+    # self.put_out_time
+
+
+
+  end
 
 
   def dash
@@ -24,20 +38,17 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    # p params
-    # if params. == true then
-      @charges = Charge.all.pluck(:vehicle_type)
       @vehicle = Vehicle.new
-    # end
   end
 
   # GET /vehicles/1/edit
   def edit
+    # binding.pry
   end
 
   # POST /vehicles or /vehicles.json
   def create
-    binding.pry
+    # binding.pry
       @vehicle = Vehicle.new(vehicle_params)
 
 
@@ -77,8 +88,12 @@ class VehiclesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle_type
+    @vehicle_types = Charge.all.order(:vehicle_type).pluck(:vehicle_type)
+  end
     def set_vehicle
       @vehicle = Vehicle.find(params[:id])
+      @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
     end
 
     # Only allow a list of trusted parameters through.
