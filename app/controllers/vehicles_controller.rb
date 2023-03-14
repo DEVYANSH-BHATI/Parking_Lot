@@ -4,9 +4,6 @@ class VehiclesController < ApplicationController
   before_action :authenticate_user!
   # layout 'application'
 
-
-
-
   def dash
     # render vehicles
   end
