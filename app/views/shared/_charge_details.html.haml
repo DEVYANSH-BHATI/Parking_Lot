@@ -1,0 +1,28 @@
+.app-main__outer
+  .app-main__inner
+    .row
+      .col-md-12
+        .main-card.mb-3.card
+          .card-header
+            = form_tag charges_path, :method => 'get', style: "padding : 0px; margin : auto;" do
+              = search_field_tag :search, params[:search], class: "search-input", placeholder: "type to search"
+              = button_tag "search", class: "btn-shadow btn btn-light", style: "padding : 8px; margin-top : 1px;"
+              %button.close
+          .table-responsive
+            %table.align-middle.mb-0.table.table-borderless.table-striped.table-hover
+              %thead
+                %tr
+                  %th.text-center #
+                  %th.text-center Vehicle type
+                  %th.text-center Min charge
+                  %th.text-center Min hours
+                  %th.text-center Extra hour
+
+                %tbody
+                  - @charges.each do |charge|
+                    %tr
+                      %td.text-center= charge.id
+                      %td.text-center= charge.vehicle_type
+                      %td.text-center= charge.min_charge
+                      %td.text-center= charge.min_hours
+                      %td.text-center= charge.extra_hour_charges

@@ -46,7 +46,6 @@ class Vehicle < ApplicationRecord
     end
 
 
-
     # search
     def self.search(search)
         if search

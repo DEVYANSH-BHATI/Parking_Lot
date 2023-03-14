@@ -19,6 +19,7 @@ class ChargesController < ApplicationController
   # GET /charges/new
   def new
     @charge = Charge.new
+    @charges = Charge.all
   end
 
   # GET /charges/1/edit

@@ -16,8 +16,6 @@ class VehiclesController < ApplicationController
     # @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
     # self.put_out_time
 
-
-
   end
 
 
@@ -28,8 +26,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
 
-    @vehicles = Vehicle.search(params[:search])
-
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 6)
   end
 
   # GET /vehicles/1 or /vehicles/1.json
@@ -44,6 +41,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1/edit
   def edit
     # binding.pry
+    @charges = Charge.all.pluck(:vehicle_type)
   end
 
   # POST /vehicles or /vehicles.json

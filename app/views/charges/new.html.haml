@@ -1,9 +1,12 @@
 
 .form.container
+  .row
   - if current_user.is_Admin
-    %h1 New charge
-    = render "form"
+    .col
+      %h1 New charge
+      = render "form"
+    .col
+      = render "shared/charge_details"
   - else
     = render "shared/not_admin"
-
-  = link_to 'Back', charges_path
+    link_to 'Back', charges_path
