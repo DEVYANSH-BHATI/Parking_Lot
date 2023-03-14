@@ -8,11 +8,12 @@ class VehiclesController < ApplicationController
 
   def leaving
     # binding.pry
+    @vehicle.out_time = DateTime.now
     @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
     # pp @charges.inspect
     # pp @vehicle.inspect
-    pp self , 'asdfsdfsdf'
-    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
+    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,@vehicle.in_time,@vehicle.out_time)
+    # @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
     # self.put_out_time
 
 
