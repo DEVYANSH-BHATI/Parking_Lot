@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'users/index'
+  match '/users',   to: 'users#index',   via: 'get'
   resources :charges
     devise_for :users, controllers: {
       registrations: 'users/registrations',
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     resources :vehicles do
       member do
         get :charge
+        get :leaving
       end
     end
      resources :charges do

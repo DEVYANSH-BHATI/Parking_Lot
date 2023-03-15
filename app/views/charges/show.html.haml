@@ -1,4 +1,3 @@
-
 .app-main__outer
   .app-main__inner
     .app-page-title.text-center
@@ -12,7 +11,7 @@
                 %button.btn-shadow.btn.btn-outline-info{:type => "button"}
                   = link_to "Edit charge", edit_charge_path(@charge)
               .col
-                = button_to 'Delete this Charge', @charge, method: :delete, class: 'btn-shadow btn btn-outline-info'
+                = button_to 'Delete this Charge', @charge, method: :delete, class: "btn-shadow btn btn-outline-info", style: 'margin-top: -1px;'
           .table-responsive
             %table.align-middle.mb-0.table.table-borderless.table-striped.table-hover
               %thead
@@ -29,28 +28,3 @@
                   %td.text-center= @charge.min_charge
                   %td.text-center= @charge.min_hours
                   %td.text-center= @charge.extra_hour_charges
-
-
-
-
-
-
-
-%p#notice= notice
-
-%p
-%b Vehicle type:
-= @charge.vehicle_type
-%p
-%b Min charge:
-= @charge.min_charge
-%p
-%b Min hours:
-= @charge.min_hours
-%p
-%b Extra hour charges:
-= @charge.extra_hour_charges
-
-= link_to 'Edit', edit_charge_path(@charge)
-\|
-= link_to 'Back', charges_path
