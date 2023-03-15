@@ -31,6 +31,7 @@
 /config/master.key
 
 # my custom ignore files
-/parking_lot_con_working.session.sql
-/.vscode
-.gitignore
+#.gitignore
+.idea/
+
+
