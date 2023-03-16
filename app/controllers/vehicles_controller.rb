@@ -25,9 +25,21 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-
     @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 6)
+    if params[:status].present?
+      @vehicles = Vehicle.where(status: params[:status]).paginate(page: params[:page], per_page: 6)
+    elsif params[:owner].present?
+      @vehicles = Vehicle.order(owner: :desc).paginate(page: params[:page], per_page: 6)
+    end
   end
+
+  # def category
+  #   if params[:status].present?
+  #     @vehicles = Vehicle.where(status: params[:status])
+  #   else
+  #     @vehicles=Vehicle.all
+  #   end
+  # end
 
   # GET /vehicles/1 or /vehicles/1.json
   def show
@@ -89,13 +101,15 @@ class VehiclesController < ApplicationController
   def set_vehicle_type
     @vehicle_types = Charge.all.order(:vehicle_type).pluck(:vehicle_type)
   end
-    def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
-      @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
-    end
+
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+    @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
+  end
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
       params.require(:vehicle).permit(:vehicle_type, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
     end
 end
+

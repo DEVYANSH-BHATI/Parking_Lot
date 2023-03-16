@@ -1,7 +1,7 @@
 class Vehicle < ApplicationRecord
     # belongs_to :admin
     # belongs_to :charge
-    
+
 
     #validations
     validates_uniqueness_of :number
@@ -9,6 +9,7 @@ class Vehicle < ApplicationRecord
     validates :status ,:inclusion => %w[ parked left ]
     before_validation  :put_intime_and_status , on: :create
 
+    status = %w{parked left}
     def put_intime_and_status
         pp"put intime"
         self.in_time = DateTime.now
@@ -45,7 +46,11 @@ class Vehicle < ApplicationRecord
         self.status = left
     end
 
-
+    # def self.filter_by_vehicle
+    #     if status
+    #         where("status ILIKE :status", status: "%#{status}")
+    #     end
+    # end
     # search
     def self.search(search)
         if search

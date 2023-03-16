@@ -13,16 +13,23 @@
           <div class="card-header">
             <div class="row">
               <div class="col">
-                <button type="button" class="btn-shadow btn btn-outline-secondary">Name/Number</button>
+                <%= link_to "Name/Number", vehicles_path(:owner => "owner"), class: "btn-shadow btn btn-outline-info" %>
+                <%# <button type="button" class="btn-shadow btn btn-outline-secondary">Name/Number</button> %>
               </div>
               <div class="col">
-                <button type="button" class="btn-shadow btn btn-outline-success">VehicleNo</button>
+                <%= link_to "VehicleNo", vehicles_path(:owner => "number"), class: "btn-shadow btn btn-outline-info" %>
+
+                <%# <button type="button" class="btn-shadow btn btn-outline-success">VehicleNo</button> %>
               </div>
               <div class="col">
-                <button type="button" class="btn-shadow btn btn-outline-danger">Bike</button>
+                <%= link_to "Bike", vehicles_path(:owner => "bike"), class: "btn-shadow btn btn-outline-info" %>
+
+                <%# <button type="button" class="btn-shadow btn btn-outline-danger">Bike</button> %>
               </div>
               <div class="col">
-                <button type="button" class="btn-shadow btn btn-outline-danger">Car</button>
+                <%= link_to "Car", vehicles_path(:owner => "car"), class: "btn-shadow btn btn-outline-info" %>
+
+                <%# <button type="button" class="btn-shadow btn btn-outline-danger">Car</button> %>
               </div>
 
             </div>

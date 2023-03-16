@@ -3,16 +3,17 @@
       <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
           <ul class="vertical-nav-menu">
-            <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
+            <strong clas="btn-shadow btn btn-outline-dark"> Dashboard</strong>
+            <%# <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
 
             <li class="app-sidebar__heading">
              <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
              </li>
              <li class="app-sidebar__heading">
-             <%= link_to "Parked vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+             <%= link_to "Parked vehicles", vehicles_path(:status => "parked"), class: "btn-shadow btn btn-outline-info" %>
              </li>
              <li class="app-sidebar__heading">
-             <%= link_to "Left vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+             <%= link_to "Left vehicles", vehicles_path(:status => "left"), class: "btn-shadow btn btn-outline-info" %>
              </li>
 
 

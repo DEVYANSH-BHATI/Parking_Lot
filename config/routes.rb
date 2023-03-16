@@ -19,12 +19,16 @@ Rails.application.routes.draw do
         get :charge
         get :leaving
       end
+      # collection do
+      #   get :category
+      # end
     end
-     resources :charges do
-       member do
+
+    resources :charges do
+      member do
         get :charge
-       end
-     end
+      end
+    end
 
     # root "home#index"
     root "vehicles#index"
