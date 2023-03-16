@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy charge leaving ]
+  before_action :set_vehicle, only: %i[ show edit update destroy charge leaving leaved ]
   before_action :set_vehicle_type, only: %i[ new edit create ]
 
   before_action :authenticate_user!
@@ -8,14 +8,32 @@ class VehiclesController < ApplicationController
 
   def leaving
     # binding.pry
-    @vehicle.out_time = DateTime.now
-    @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
+    # @readable_total_hours2  = Human_time::seconds_to_string(@vehicle.out_time - @vehicle.in_time)
+
+    # binding.pry
     # pp @charges.inspect
     # pp @vehicle.inspect
-    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,@vehicle.in_time,@vehicle.out_time)
     # @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
     # self.put_out_time
 
+  end
+
+  def leaved
+    @vehicle.out_time = DateTime.now.utc.in_time_zone('Asia/Kolkata')
+
+    @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
+    # @readable_total_hours2  = Human_time::seconds_to_string(@vehicle.out_time - @vehicle.in_time)
+    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,@vehicle.in_time,@vehicle.out_time)
+
+    respond_to do |format|
+      if @vehicle.save
+        format.html { redirect_to vehicles_url, notice: "Vehicle successfully left the parking lot." }
+      # else
+      #   format.html { render :new, status: :unprocessable_entity }
+      #   format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+      end
+
+    end
   end
 
 

@@ -3,7 +3,6 @@
 <p style="color: green"><%= notice %></p>
 
 <p style="color: green"><%= %></p>
-
 <div class="app-main__outer">
   <div class="app-main__inner">
     <div class="app-page-title text-center"><strong>Parking Lot Dashboard</strong></div>
@@ -58,9 +57,12 @@
                   <th class="text-center">Actions(User)</th>
                 </tr>
               </thead>
-              <% @vehicles.each do |vehicle| %>
-              <%= render vehicle %>
-              <% end %>
+
+              <%= render partial: "vehicle" , collection: @vehicles, as: :vehicle, locals: { readable_total_hours2: @readable_total_hours2} %>
+
+              <%#= render partial: "vehicle" , collection: @vehicles %>
+
+
             </table>
             <%= will_paginate @vehicles, :container => false %>
           </div>
