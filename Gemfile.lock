@@ -166,6 +166,7 @@ GEM
     nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.0.2)
     pg (1.4.6)
     pg (1.4.6-x64-mingw-ucrt)
     popper_js (2.11.6)
@@ -284,7 +285,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  pg (~> 1.1)
+  pagy
+  pg
   popper_js
   pry (~> 0.13.1)
   puma (~> 5.0)

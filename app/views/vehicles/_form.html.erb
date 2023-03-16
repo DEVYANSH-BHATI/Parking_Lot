@@ -31,10 +31,10 @@
   </div>
 
   <div>
-    <%= form.label :"user_id=#{current_user.id} ,name=#{current_user.firstName}", style: "display: block" %>
-    <%= form.number_field :user_id,value: current_user.id %>
+    <%#= form.label :"user_id=#{current_user.id} ,name=#{current_user.firstName}", style: "display: block" %>
+    <%= form.hidden_field :user_id,value: current_user.id %>
   </div>
-
+<br>
   <div>
     <%= form.submit %>
   </div>
