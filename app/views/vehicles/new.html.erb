@@ -1,9 +1,13 @@
-<h1>New vehicle</h1>
 
-<%= render "form", vehicle: @vehicle %>
+     <div class="form container">
 
-<br>
+         <h1 class="h1 display-1">Welcome <%=current_user.firstName %> </h1>
+         <h1>add New vehicle</h1>
+          <%= render "form", vehicle: @vehicle %>
+         <br>
 
-<div>
-  <%= link_to "Back to vehicles", vehicles_path %>
-</div>
+       <div>
+        <%= link_to "Back to vehicles", vehicles_path %>
+       </div>
+     </div>
+

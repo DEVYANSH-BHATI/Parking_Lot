@@ -12,40 +12,29 @@
   <% end %>
 
   <div>
-    <%= form.label :charge_id, style: "display: block" %>
-    <%= form.number_field :charge_id %>
+    <%= form.label :"Name of owner", style: "display: block" %>
+    <%= form.text_field :owner %>
+  </div>
+  <div>
+    <%= form.label :vehicle_type,"Vehicle Type", style: "display: block" %>
+    <%= form.select(:vehicle_type) do %>
+      <% @vehicle_types.each do |l| %>
+        <%= content_tag(:option, l, value: l) %>
+      <% end %>
+    <% end %>
+    <%#= form.select :vehicle_type ,@charges %>
   </div>
 
   <div>
-    <%= form.label :number, style: "display: block" %>
+    <%= form.label :"Vehicle no", style: "display: block" %>
     <%= form.text_field :number %>
   </div>
 
   <div>
-    <%= form.label :in_time, style: "display: block" %>
-    <%= form.datetime_field :in_time %>
+    <%#= form.label :"user_id=#{current_user.id} ,name=#{current_user.firstName}", style: "display: block" %>
+    <%= form.hidden_field :user_id,value: current_user.id %>
   </div>
-
-  <div>
-    <%= form.label :out_time, style: "display: block" %>
-    <%= form.datetime_field :out_time %>
-  </div>
-
-  <div>
-    <%= form.label :charges, style: "display: block" %>
-    <%= form.number_field :charges %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
+<br>
   <div>
     <%= form.submit %>
   </div>

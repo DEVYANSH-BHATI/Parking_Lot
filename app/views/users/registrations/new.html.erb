@@ -1,29 +1,74 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+<section class="background text-center">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="card-body">
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="d-flex justify-content-center">
+        <div class="col">
+          <h2 class="fw-bold">Sign up now</h2>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+          <form>
 
-<%= render "users/shared/links" %>
+             <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <%= f.label :"First Name", { class: "form-label"} %>
+                  <%= f.text_field :firstName, {class: "form-control" } %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <%= f.label :"Last Name", {class: "form-label" } %>
+                  <%= f.text_field :lastName, {class: "form-control" } %>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email input -->
+
+            <div class="Field form-outline">
+              <%= f.label :email, { class: "form-label"} %><br />
+              <%= f.email_field :email, { class: "form-control", placeholder: "Enter Email address" }%>
+              <%# <input type="email" id="form3Example3" class="form-control" />
+              <label class="form-label" for="form3Example3">Email address</label> %>
+            </div>
+
+            <div class="Field form-outline">
+              <%= f.label :password, { class: "form-label" }%>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, { class: "form-control", placeholder: "New Password" } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation, { class: "form-label" } %><br />
+               <%= f.password_field :password_confirmation, { class: "form-control", placeholder: "confirm Password" } %>
+            </div>
+
+            <br>
+
+            <div class="form-check d-flex justify-content-start mb-4">
+              <%= f.check_box :is_Admin, {class: "form-check-input"} %>
+              <%= f.label :"Creating Admin account", {class: "form-check-label"} %>
+            </div>
+
+
+            <div class="actions">
+              <%= f.submit "Sign up", { class: "btn btn-primary btn-block mb-4" }%>
+            </div>
+            <div class="text-center">
+                <%= render "users/shared/links" %>
+            </div>
+
+          </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+</section>

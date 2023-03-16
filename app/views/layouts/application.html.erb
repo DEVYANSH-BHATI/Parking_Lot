@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ParkingLot</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Parking Lot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,15 +25,29 @@
   <body>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <%=render "devise/shared/alerts"%>
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-3">
-      <%= yield %>
-    </div>
-  </div>
-</div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+<!--      <p> Hai this is muthu</p>-->
+      <% if user_signed_in? %>
+      <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <%= render "shared/dashboard_header" %>
+      <% end %>
+        <% if user_signed_in? %>
+        <div class="app-main">
+          <%= render "shared/dashboard_sidebar" %>
+      <% end %>
+          <%= yield %>
+      <% if user_signed_in? %>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+        </div>
+      <% end %>
 
+
+<!--      <p> Hai this is muthu</p>-->
+ <%= render "shared/footer"%>
+    <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>
 
   </body>
 </html>

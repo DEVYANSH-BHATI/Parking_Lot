@@ -1,39 +1,47 @@
-<h1><strong>Vehicles Details</strong></h1>
-
 <div id="<%= dom_id vehicle %>">
-  <p>
-    <strong>Charge:</strong>
-    <%= vehicle.charge_id %>
-  </p>
+  <tbody>
+  <tr>
+    <th class="text-center text-muted"><%= vehicle.id %></th>
+    <td>
+      <div class="widget-heading"><%= link_to vehicle.owner, vehicle %></div>
+    </td>
+    <td>
+      <div class="widget-heading"><%= vehicle.vehicle_type %></div>
+    </td>
+    <td class="text-center"><%= vehicle.number %></td>
+    <td class="text-center"> <%= vehicle.in_time.strftime("%d %b, %y at %I : %M %p") %></td>
 
-  <p>
-    <strong>Number:</strong>
-    <%= vehicle.number %>
-  </p>
 
-  <p>
-    <strong>In time:</strong>
-    <%= vehicle.in_time %>
-  </p>
+    <%if vehicle.out_time %>
+      <td class="text-center"><%= vehicle.out_time.strftime("%d %b, %y at %I : %M %p") %></td>
+    <% else %>
+      <td class="text-center">nil</td>
+    <% end %>
 
-  <p>
-    <strong>Out time:</strong>
-    <%= vehicle.out_time %>
-  </p>
 
-  <p>
-    <strong>Charges:</strong>
-    <%= vehicle.charges %>
-  </p>
+    <%if vehicle.out_time %>
+<!--      <td class="text-center"><%#= vehicle.readable_total_hours(vehicle.out_time - vehicle.in_time)%></td>  <-#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
+      <td class="text-center"><%= calculate_charge(vehicle.out_time - vehicle.in_time) %></td>  <!--#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
+  <% else %>
+      <td class="text-center">nil</td>
+  <% end %>
 
-  <p>
-    <strong>Status:</strong>
-    <%= vehicle.status %>
-  </p>
+    <% if vehicle.charges %>
+      <td class="text-center"> <%= vehicle.charges %></td>
+    <% else %>
+      <td class="text_center">click pay button to calculate</td>
+    <% end %>
 
-  <p>
-    <strong>User:</strong>
-    <%= vehicle.user_id %>
-  </p>
+    <td class="text-center">
+      <div><%= vehicle.status %></div>
+    </td>
+    <td class="text-center">
+      <% if vehicle.status != 'left' %>
+      <%#= link_to 'pay_charge' ,{:controller => "vehicles", action: :leaving},class: "btn btn-primary"  %>
+      <%= link_to 'pay_charge' ,leaving_vehicle_path(vehicle),class: "btn btn-primary"  %>
+     <% end  %>
+  </tr>
+
+</tbody>
 
 </div>

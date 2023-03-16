@@ -1,9 +1,50 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy ]
+  before_action :set_vehicle, only: %i[ show edit update destroy charge leaving leaved ]
+  before_action :set_vehicle_type, only: %i[ new edit create ]
+
+  before_action :authenticate_user!
+  # layout 'application'
+
+
+  def leaving
+    # binding.pry
+    # @readable_total_hours2  = Human_time::seconds_to_string(@vehicle.out_time - @vehicle.in_time)
+
+    # binding.pry
+    # pp @charges.inspect
+    # pp @vehicle.inspect
+    # @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,(-1)*( @vehicle.in_time - DateTime.now )/3600)
+    # self.put_out_time
+
+  end
+
+  def leaved
+    @vehicle.out_time = DateTime.now.utc.in_time_zone('Asia/Kolkata')
+
+    @charges = Charge.find_by_vehicle_type(@vehicle.vehicle_type)
+    # @readable_total_hours2  = Human_time::seconds_to_string(@vehicle.out_time - @vehicle.in_time)
+    @vehicle.put_charges(@charges.min_charge,@charges.min_hours,@charges.extra_hour_charges,@vehicle.in_time,@vehicle.out_time)
+
+    respond_to do |format|
+      if @vehicle.save
+        format.html { redirect_to vehicles_url, notice: "Vehicle successfully left the parking lot." }
+      # else
+      #   format.html { render :new, status: :unprocessable_entity }
+      #   format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+      end
+
+    end
+  end
+
+
+  def dash
+    # render vehicles
+  end
 
   # GET /vehicles or /vehicles.json
   def index
-    @vehicles = Vehicle.all
+
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 6)
   end
 
   # GET /vehicles/1 or /vehicles/1.json
@@ -12,16 +53,20 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
+      @vehicle = Vehicle.new
   end
 
   # GET /vehicles/1/edit
   def edit
+    # binding.pry
+    @charges = Charge.all.pluck(:vehicle_type)
   end
 
   # POST /vehicles or /vehicles.json
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    # binding.pry
+      @vehicle = Vehicle.new(vehicle_params)
+
 
     respond_to do |format|
       if @vehicle.save
@@ -59,12 +104,16 @@ class VehiclesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle_type
+    @vehicle_types = Charge.all.order(:vehicle_type).pluck(:vehicle_type)
+  end
     def set_vehicle
       @vehicle = Vehicle.find(params[:id])
+      @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
     end
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
-      params.require(:vehicle).permit(:charge_id, :number, :in_time, :out_time, :charges, :status, :user_id)
+      params.require(:vehicle).permit(:vehicle_type, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)
     end
 end

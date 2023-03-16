@@ -1,0 +1,36 @@
+<div class="app-sidebar sidebar-shadow">
+
+  <div class="scrollbar-sidebar">
+    <div class="app-sidebar__inner">
+      <ul class="vertical-nav-menu">
+        <%= link_to "Dashboard", vehicles_path, class: "btn-shadow btn btn-outline-dark" %>
+
+        <li class="app-sidebar__heading">
+          <%= link_to "All vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+        <li class="app-sidebar__heading">
+          <%= link_to "Parked vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+        <li class="app-sidebar__heading">
+          <%= link_to "Left vehicles", vehicles_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+        <% if current_user %>
+          <li class="app-sidebar__heading">
+            <%= link_to "New vehicles", new_vehicle_path, class: "btn-shadow btn btn-outline-info" %>
+          </li>
+        <%end%>
+        <li class="app-sidebar__heading">
+          <%= link_to "Vehicles Charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+        <li class="app-sidebar__heading">
+          <%= link_to "New charge", new_charge_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+        <li class="app-sidebar__heading">
+          <%= link_to "Update charge", charges_path, class: "btn-shadow btn btn-outline-info" %>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
