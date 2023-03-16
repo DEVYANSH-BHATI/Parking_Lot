@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       member do
         get :charge
         get :leaving
+        get :leaved
       end
     end
      resources :charges do

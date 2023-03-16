@@ -9,21 +9,22 @@
       <div class="widget-heading"><%= vehicle.vehicle_type %></div>
     </td>
     <td class="text-center"><%= vehicle.number %></td>
-    <td class="text-center"> <%= vehicle.in_time %></td>
+    <td class="text-center"> <%= vehicle.in_time.strftime("%d %b, %y at %I : %M %p") %></td>
 
 
     <%if vehicle.out_time %>
-      <td class="text-center"><%= vehicle.out_time %></td>
+      <td class="text-center"><%= vehicle.out_time.strftime("%d %b, %y at %I : %M %p") %></td>
     <% else %>
       <td class="text-center">nil</td>
     <% end %>
 
 
     <%if vehicle.out_time %>
-      <td class="text-center"><%= (vehicle.out_time - vehicle.in_time)/(3600) %></td>  <!--#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
-    <% else %>
+<!--      <td class="text-center"><%#= vehicle.readable_total_hours(vehicle.out_time - vehicle.in_time)%></td>  <-#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
+      <td class="text-center"><%= calculate_charge(vehicle.out_time - vehicle.in_time) %></td>  <!--#total hours column  (vehicle.out_time - vehicle.in_time)/(3600)-->
+  <% else %>
       <td class="text-center">nil</td>
-    <% end %>
+  <% end %>
 
     <% if vehicle.charges %>
       <td class="text-center"> <%= vehicle.charges %></td>
