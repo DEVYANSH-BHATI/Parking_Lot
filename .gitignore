@@ -33,5 +33,7 @@
 # my custom ignore files
 #.gitignore
 .idea/
-
+.vscode/
+parking_lot_con_working.session.sql
+.gitignore
 
