@@ -1,7 +1,6 @@
 class Vehicle < ApplicationRecord
     # belongs_to :admin
     # belongs_to :charge
-    # include or extend
     require_relative 'human_time'
 
     extend Human_time
@@ -11,6 +10,7 @@ class Vehicle < ApplicationRecord
     validates :status ,:inclusion => %w[ parked left ]
     before_validation  :put_intime_and_status , on: :create
 
+    status = %w{parked left}
     def put_intime_and_status
         pp"put intime"
         self.in_time = DateTime.now.utc.in_time_zone('Asia/Kolkata')
