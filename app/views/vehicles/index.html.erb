@@ -65,9 +65,25 @@
 
             </table>
             <%= will_paginate @vehicles, :container => false %>
+
+            
+
           </div>
         </div>
+              <div class="main-card mb-3 card">
+                <% @charges.each do |v| %>
+                  <div>
+                    <strong>No of <%= v %>:</strong>
+                    <%= Vehicle.where(vehicle_type: v).count %>
+                  </div>
+                <% end %>
+                <br>
+                <div >Total Vehicles:<%= Vehicle.count%></div>
+              </div>
       </div>
     </div>
   </div>
+
+
+
 </div>

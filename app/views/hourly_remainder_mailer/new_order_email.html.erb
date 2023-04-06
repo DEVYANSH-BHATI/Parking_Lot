@@ -1,0 +1,25 @@
+# app/views/order_mailer/new_order_email.html.erb
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You got a new order from <%= @vehicle.owner%>!</p>
+    <p>
+    Order details<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @vehicle.number %></p>
+    <p>Email: <%= @vehicle.charges %></p>
+    <p>Address: <%= @vehicle.status %></p>
+    <p>Phone: <%= @vehicle.owner %></p>
+    <p>email: <%= @user.email %></p>
+    <p>
+    Message:<br>
+    ----------
+    </p>
+    <p><%#= @vehicle.message %></p>
+  </body>
+</html>

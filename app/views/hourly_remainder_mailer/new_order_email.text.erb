@@ -1,0 +1,15 @@
+# app/views/order_mailer/new_order_email.text.erb
+
+You got a new order from <%= @vehicle.owner %>!
+===============================================
+
+Order Details:
+--------------------------
+
+Name: <%= @vehicle.number %>
+Email: <%= @vehicle.charges%>
+Address: <%= @vehicle.status %>
+Phone: <%= @vehicle.owner %>
+
+Message:
+<%#= @vehicle.message %>
