@@ -1,9 +1,18 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[ show edit update destroy charge leaving leaved ]
   before_action :set_vehicle_type, only: %i[ new edit create ]
-
+  before_action :set_charges , only: %i[ edit index ]
   before_action :authenticate_user!
   # layout 'application'
+
+
+
+  def particular_day
+    selected_date = Time.now
+    @ListOfVehiclesToday = Vehicle.where(:created_at  => @selected_date.beginning_of_day..@selected_date.end_of_day)
+  end
+
+
 
 
   def leaving
@@ -27,7 +36,8 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to vehicles_url, notice: "Vehicle successfully left the parking lot." }
+        format.html { redirect_to vehicles_url, notice: "" }
+        # format.html { redirect_to vehicles_url, notice: "Vehicle successfully left the parking lot." }
       # else
       #   format.html { render :new, status: :unprocessable_entity }
       #   format.json { render json: @vehicle.errors, status: :unprocessable_entity }
@@ -43,11 +53,11 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles or /vehicles.json
   def index
-    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 6)
+    @vehicles = Vehicle.search(params[:search]).paginate(page: params[:page], per_page: 5)
     if params[:status].present?
-      @vehicles = Vehicle.where(status: params[:status]).paginate(page: params[:page], per_page: 6)
+      @vehicles = Vehicle.where(status: params[:status]).paginate(page: params[:page], per_page: 5)
     elsif params[:owner].present?
-      @vehicles = Vehicle.order(owner: :desc).paginate(page: params[:page], per_page: 6)
+      @vehicles = Vehicle.order(owner: :desc).paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -71,19 +81,22 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1/edit
   def edit
     # binding.pry
-    @charges = Charge.all.pluck(:vehicle_type)
+    # @charges = Charge.all.pluck(:vehicle_type)
+
   end
 
   # POST /vehicles or /vehicles.json
   def create
     # binding.pry
       @vehicle = Vehicle.new(vehicle_params)
-
+      
 
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to vehicle_url(@vehicle), notice: "Vehicle was successfully created." }
         format.json { render :show, status: :created, location: @vehicle }
+
+        HourlyRemainderMailer.with(vehicle: @vehicle).new_order_email.deliver_later
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
@@ -122,9 +135,12 @@ class VehiclesController < ApplicationController
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
-    @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
+    @time_now = Time.new.strftime("%d %b, %y at %I : %M %p")
   end
 
+  def set_charges
+    @charges = Charge.all.pluck(:vehicle_type)
+  end
     # Only allow a list of trusted parameters through.
     def vehicle_params
       params.require(:vehicle).permit(:vehicle_type, :number, :in_time, :out_time, :charges, :status, :user_id, :owner)

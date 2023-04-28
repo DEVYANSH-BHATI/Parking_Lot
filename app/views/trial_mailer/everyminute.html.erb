@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You got a new booking from <%#= @vehicle.owner%>!</p>
+    <p>
+    Order details<br>
+    --------------------------
+    </p>
+    <p>Name: <%#= @vehicle.number %></p>
+    <p>In_time: <%#= @vehicle.in_time.in_time_zone('Asia/Kolkata').strftime("%d %b, %y at %I : %M %p") %></p>
+    <p>Type: <%#= @vehicle.vehicle_type %></p>
+    <p>Address: <%#= @vehicle.status %></p>
+    <p>Owner: <%#= @vehicle.owner %></p>
+    <p>email: <%#= User.find(@vehicle.user_id).email %></p>
+    <p>
+    Message:<br>
+    ----------
+    </p>
+    <p><%#= @vehicle.message %></p>
+  </body>
+</html>

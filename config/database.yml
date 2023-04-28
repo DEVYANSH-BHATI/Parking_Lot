@@ -60,7 +60,7 @@ test:
   <<: *default
   database: parking_lot_test
   pool: 5
-  username: postgres
+  username: deva
 
   # The password associated with the postgres role (username).
   password: root
