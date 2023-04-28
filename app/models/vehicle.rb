@@ -1,12 +1,20 @@
 class Vehicle < ApplicationRecord
     # belongs_to :admin
     # belongs_to :charge
+    belongs_to :user , dependent: :destroy
     require_relative 'human_time'
 
     extend Human_time
     #validations
-    validates_uniqueness_of :number
-    validates_presence_of :vehicle_type,:number,:owner
+    VALID_VEHICLE_NUMBER_REGEX = /\A[a-zA-Z]{2}\d{1,2}\s?[a-zA-Z]{0,2}\s?\d{4}\z/
+    validates :number, presence: true, format: { with: VALID_VEHICLE_NUMBER_REGEX, message: "of vehicle in wrong format. Please enter a valid vehicle number in the format XX 00 XX 0000 without spaces e.g.  e.g. PY01CC5255." }
+
+
+
+
+    validates :owner , presence: true , :length =>{:minimum => 3 , :message => "name is too short."}
+    # validates_uniqueness_of :number
+    validates_presence_of :vehicle_type
     validates :status ,:inclusion => %w[ parked left ]
     before_validation  :put_intime_and_status , on: :create
 

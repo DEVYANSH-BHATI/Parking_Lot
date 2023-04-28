@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_170010) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_115530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_170010) do
     t.string "owner"
     t.bigint "user_id"
     t.string "vehicle_type"
+    t.boolean "checkout"
     t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
 

@@ -1,13 +1,15 @@
 
 
-<p style="color: green"><%= notice %></p>
 
-<p style="color: green"><%= %></p>
+<!-- <p style="color: green"><%= %></p> -->
 <div class="app-main__outer">
   <div class="app-main__inner">
     <div class="app-page-title text-center"><strong>Parking Lot Dashboard</strong></div>
     <div class="row">
       <div class="col-md-12">
+          <div class="alert" >
+            <%= notice %>  
+          </div>
         <div class="main-card mb-3 card">
           <div class="card-header">
             <div class="row">
@@ -75,6 +77,8 @@
                   <div>
                     <strong>No of <%= v %>:</strong>
                     <%= Vehicle.where(vehicle_type: v).count %>
+                    &nbsp Out of 10 
+                    <%#=  %>
                   </div>
                 <% end %>
                 <br>

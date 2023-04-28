@@ -1,15 +1,15 @@
 # app/views/order_mailer/new_order_email.text.erb
 
-You got a new order from <%= @vehicle.owner %>!
+You got a booking from <%= @vehicle.owner %>!
 ===============================================
 
 Order Details:
 --------------------------
 
 Name: <%= @vehicle.number %>
-Email: <%= @vehicle.charges%>
-Address: <%= @vehicle.status %>
-Phone: <%= @vehicle.owner %>
+in_time: <%= @vehicle.in_time.in_time_zone('Asia/Kolkata').strftime("%d %b, %y at %I : %M %p") %>
+status: <%= @vehicle.status %>
+owner: <%= @vehicle.owner %>
 
 Message:
 <%#= @vehicle.message %>

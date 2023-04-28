@@ -6,6 +6,15 @@ class VehiclesController < ApplicationController
   # layout 'application'
 
 
+
+  def particular_day
+    selected_date = Time.now
+    @ListOfVehiclesToday = Vehicle.where(:created_at  => @selected_date.beginning_of_day..@selected_date.end_of_day)
+  end
+
+
+
+
   def leaving
     # binding.pry
     # @readable_total_hours2  = Human_time::seconds_to_string(@vehicle.out_time - @vehicle.in_time)
@@ -67,9 +76,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   def new
       @vehicle = Vehicle.new
-
-      
-
   end
 
   # GET /vehicles/1/edit
@@ -129,7 +135,7 @@ class VehiclesController < ApplicationController
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
-    @time_now = Time.new.strftime("%Y-%m-%dT%k:%M")
+    @time_now = Time.new.strftime("%d %b, %y at %I : %M %p")
   end
 
   def set_charges
